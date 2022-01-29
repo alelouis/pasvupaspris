@@ -48,7 +48,7 @@ public class DayNight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isDay = (Mathf.Floor(audioSource.timeSamples / samplesPerDay)) % 2 == 1;
+        isDay = (Mathf.Floor(audioSource.timeSamples / samplesPerDay)) % 2 == 0;
         transitionToDay = (isDay && !wasDay);
         transitionToNight = (!isDay && wasDay);
         if (isDay != wasDay) {
