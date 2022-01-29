@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790c373703a47304c9caf55cc4ee4e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocityThreshold: 0.1
+  colorWhenStuck: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0.5686275}
 --- !u!61 &8277388175346754995
 BoxCollider2D:
   m_ObjectHideFlags: 0

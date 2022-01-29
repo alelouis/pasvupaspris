@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private bool jumpWanted = false;
 
+    private SpriteRenderer spriteRenderer;
+
     void OnEnable()
     {
         this.horizontalInput.Enable();
@@ -36,12 +38,12 @@ public class PlayerController : MonoBehaviour
         this.horizontalInput.performed += this.OnHorizontalInput;
         this.jumpInput.performed += this.OnJumpInput;
         this.rb = GetComponent<Rigidbody2D>();
+        this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     void FixedUpdate() {
