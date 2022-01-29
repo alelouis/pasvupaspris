@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public AudioSource walkSFX;
+
     void OnEnable()
     {
         this.horizontalInput.Enable();
@@ -39,17 +41,28 @@ public class PlayerController : MonoBehaviour
         this.jumpInput.performed += this.OnJumpInput;
         this.rb = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        walkSFX.loop = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (this.horizontalCommand != 0) {
+            if (!this.walkSFX.isPlaying) {
+                this.walkSFX.Play();
+            }
+        } else {
+            this.walkSFX.Stop();
+        }
     }
 
     void FixedUpdate() {
         Vector3 velocityBefore = this.rb.velocity;
 
         this.horizontalCommand = this.horizontalInput.ReadValue<float>();
+
+
+        
         float wantedHorizontalVelocity = this.horizontalMovementSpeed * this.horizontalCommand;
 
         float wantedVerticalVelocity = velocityBefore.y;

@@ -16,6 +16,8 @@ public class BowController : MonoBehaviour
 
     private bool shootEnabled = false;
 
+    public AudioSource shootSFX;
+
     void OnEnable() {
         this.aimAction.Enable();
         this.shootAction.Enable();
@@ -57,6 +59,7 @@ public class BowController : MonoBehaviour
             Arrow arrow = Instantiate(arrowTemplate);
             arrow.transform.position = this.transform.position;
             arrow.SetVelocity(this.direction.normalized * this.arrowSpeed);
+            shootSFX.PlayOneShot(this.shootSFX.clip, 1.0f);
         }
     }
 }

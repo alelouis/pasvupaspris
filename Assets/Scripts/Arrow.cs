@@ -13,6 +13,7 @@ public class Arrow : MonoBehaviour
     private bool stuck = false;
 
     private SpriteRenderer spriteRenderer;
+    public AudioSource collisionSFX;
 
 
     void Awake()
@@ -35,6 +36,7 @@ public class Arrow : MonoBehaviour
         this.rb.simulated = false;
         this.rb.velocity = Vector2.zero;
         this.spriteRenderer.color = colorWhenStuck;
+        collisionSFX.Play();
     }
 
     public void SetVelocity(Vector3 velocity) {
