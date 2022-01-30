@@ -8,6 +8,7 @@ public class EnnemyProjectile : MonoBehaviour
     private bool touched = false;
 
     void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("Collision with " + collision.gameObject);
         if (!touched && collision.gameObject.GetComponent<PlayerController>()) {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             player.TakeHit();

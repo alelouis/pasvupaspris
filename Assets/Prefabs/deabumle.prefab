@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6453952112997127724}
   - component: {fileID: 5920205222278302082}
   - component: {fileID: 3761615189060063658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: deabumle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
