@@ -20,6 +20,12 @@ public class GameOverController : MonoBehaviour
     {
 
     }
+
+    void OnDestroy() {
+        restart.Disable();
+        restart.performed -= Restart;
+    }
+
     void Restart(InputAction.CallbackContext context) 
     {
         SceneManager.LoadScene("PatrolScene");

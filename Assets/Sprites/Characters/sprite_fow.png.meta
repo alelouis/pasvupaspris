@@ -229,6 +229,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: deambule
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 21
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbed4e984b362ad43a686057d4c74e04
+      internalID: 108703957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: valise
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 4
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a8bf6662cde5148b2d1a2087ac8014
+      internalID: -1647329294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -241,10 +283,12 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       sprite_fow_1: -1445589506
+      deambule: 108703957
       sprite_fow_2: -663169832
       sprite_fow_0: -569633973
       sprite_fow_4: -287518627
       sprite_fow_5: -741954409
+      valise: -1647329294
       sprite_fow_3: 155718128
   spritePackingTag: 
   pSDRemoveMatte: 0

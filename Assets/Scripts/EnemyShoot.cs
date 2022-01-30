@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class EnemyShoot : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Arrow arrowTemplate;
+    public GameObject arrowTemplate;
     public Transform playerTransform;
     public float arrowSpeed;
     private Vector3 direction = Vector3.zero;
@@ -18,10 +19,12 @@ public class EnemyShoot : MonoBehaviour
     public float waitTime = 0.5f;
     private float timer = 0.0f;
 
+    private AudioSource audioSource;
+
     
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -38,11 +41,19 @@ public class EnemyShoot : MonoBehaviour
                 if (xRange < 0){
                     theta += Mathf.PI;
                 }
-                Arrow arrow = Instantiate(arrowTemplate);
+                GameObject arrow = Instantiate(arrowTemplate);
                 arrow.transform.position = this.transform.position;
                 direction.x = Mathf.Cos(theta)*arrowSpeed;
                 direction.y = Mathf.Sin(theta)*arrowSpeed;
-                arrow.SetVelocity(direction);
+                Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
+                if (rb) {
+                    rb.velocity = direction;
+                }
+
+                // play sound
+                if (!audioSource.isPlaying) {
+                    audioSource.PlayOneShot(audioSource.clip, 1f);
+                }
             }
             timer = 0.0f;
         }
