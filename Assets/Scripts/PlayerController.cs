@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        this.GetComponent<Animator>().SetBool("walking", Mathf.Abs(this.rb.velocity.x)>0.1);
+
         if (this.horizontalCommand != 0) {
             if (!this.walkAudioSource.isPlaying) {
                 this.walkAudioSource.Play();
@@ -66,10 +69,11 @@ public class PlayerController : MonoBehaviour
         Vector3 velocityBefore = this.rb.velocity;
 
         this.horizontalCommand = this.horizontalInput.ReadValue<float>();
-
-
         
         float wantedHorizontalVelocity = this.horizontalMovementSpeed * this.horizontalCommand;
+
+
+        this.GetComponent<SpriteRenderer>().flipX = this.GetComponentInChildren<BowController>().direction.x < 0;
 
         float wantedVerticalVelocity = velocityBefore.y;
         if (this.jumpWanted && velocityBefore.y == 0) {
