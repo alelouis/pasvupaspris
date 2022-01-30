@@ -49,12 +49,13 @@ public class PlayerController : MonoBehaviour
         this.rb = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         walkAudioSource.loop = true;
+        this.GetComponentInChildren<Canvas>().enabled = false;
         heartList = GameObject.FindGameObjectsWithTag("Heart"); }
     // Update is called once per frame
     void Update()
     {
-
         this.GetComponent<Animator>().SetBool("walking", Mathf.Abs(this.rb.velocity.x)>0.1);
+        this.GetComponentInChildren<Canvas>().enabled = this.rb.position.x - (-7f) < 4;
 
         if (this.horizontalCommand != 0) {
             if (!this.walkAudioSource.isPlaying) {
