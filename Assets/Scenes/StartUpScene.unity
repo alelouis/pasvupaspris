@@ -680,7 +680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GGJ 2020
+  m_text: GGJ 2022
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7373278c604f143a08dfe477c86f1147, type: 2}
   m_sharedMaterial: {fileID: 6349193267563232316, guid: 7373278c604f143a08dfe477c86f1147, type: 2}
@@ -1084,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1696851691223228272, guid: 4185079ca6630c44e9f403a0bfb2e97a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1.6222956e-37
+      value: -1.6232389e-37
       objectReference: {fileID: 0}
     - target: {fileID: 1696851691223228272, guid: 4185079ca6630c44e9f403a0bfb2e97a, type: 3}
       propertyPath: m_LocalRotation.z
