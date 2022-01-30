@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip hitSound;
 
-    public int life = 20;
+    public int life;
+    private GameObject[] heartList; 
 
     void OnEnable()
     {
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         this.rb = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         walkAudioSource.loop = true;
+        heartList = GameObject.FindGameObjectsWithTag("Heart");
     }
 
     // Update is called once per frame
@@ -95,5 +97,7 @@ public class PlayerController : MonoBehaviour
         life--;
         Debug.Log("Life : " + life);
         this.hitAudioSource.PlayOneShot(hitAudioSource.clip, 1f);
+        Debug.Log(heartList);
+        heartList[life].GetComponent<HeartController>().SetEmpty();
     }
 }
