@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour
         float wantedHorizontalVelocity = this.horizontalMovementSpeed * this.horizontalCommand;
 
         float wantedVerticalVelocity = velocityBefore.y;
-        if (this.jumpWanted) {
+        if (this.jumpWanted && velocityBefore.y == 0) {
             wantedVerticalVelocity = this.verticalJumpSpeed;
-            this.jumpWanted = false;
+           
         }
-
+        this.jumpWanted = false;
         Vector3 wantedVelocity = new Vector3(wantedHorizontalVelocity, wantedVerticalVelocity, velocityBefore.z);
         this.rb.velocity = wantedVelocity;
     }

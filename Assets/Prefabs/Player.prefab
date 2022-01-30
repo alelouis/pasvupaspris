@@ -267,10 +267,11 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   horizontalMovementSpeed: 3.62
-  verticalJumpSpeed: 8.67
+  verticalJumpSpeed: 10
   walkAudioSource: {fileID: 1153066160}
   hitAudioSource: {fileID: 1330078444941723698}
   hitSound: {fileID: 8300000, guid: e27afc99b0bbaef47a0e76a125ab37bc, type: 3}
+  life: 20
 --- !u!50 &7688558507941140997
 Rigidbody2D:
   serializedVersion: 4
@@ -287,7 +288,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2.5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5bece1eed2185184ead508a630d9aa1a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
