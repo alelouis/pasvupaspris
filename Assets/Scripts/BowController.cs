@@ -12,7 +12,7 @@ public class BowController : MonoBehaviour
 
     public float arrowSpeed = 8;
 
-    private Vector3 direction = Vector3.zero;
+    public Vector3 direction = Vector3.zero;
 
     private bool shootEnabled = false;
 
