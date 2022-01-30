@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/DayNight.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/StartUpScene.unity
+    guid: 4b3564dd50028419698e5cc86ddd187a
+  - enabled: 1
+    path: Assets/Scenes/PatrolScene.unity
+    guid: b8840c979d6d703409d19159dea107b1
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: ea1e7fedef4fc4ea397feb851e69914e
   m_configObjects: {}

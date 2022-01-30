@@ -6,15 +6,20 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public float velocityThreshold = 0.1f;
+    public Color colorWhenStuck = Color.black;
     
     private Rigidbody2D rb;
 
     private bool stuck = false;
 
+    private SpriteRenderer spriteRenderer;
+    public AudioSource collisionSFX;
+
 
     void Awake()
     {
         this.rb = GetComponent<Rigidbody2D>();
+        this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void FixedUpdate() {
@@ -30,6 +35,9 @@ public class Arrow : MonoBehaviour
         this.stuck = true;
         this.rb.simulated = false;
         this.rb.velocity = Vector2.zero;
+        this.spriteRenderer.color = colorWhenStuck;
+        collisionSFX.Play();
+        Destroy(gameObject, 5);
     }
 
     public void SetVelocity(Vector3 velocity) {

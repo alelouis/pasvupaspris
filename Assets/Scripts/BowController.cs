@@ -14,6 +14,10 @@ public class BowController : MonoBehaviour
 
     private Vector3 direction = Vector3.zero;
 
+    private bool shootEnabled = false;
+
+    public AudioSource shootSFX;
+
     void OnEnable() {
         this.aimAction.Enable();
         this.shootAction.Enable();
@@ -42,10 +46,20 @@ public class BowController : MonoBehaviour
 
     }
 
+    public void EnableShoot() {
+        this.shootEnabled = true;
+    }
+    public void DisableShoot() {
+        this.shootEnabled = false;
+    }
+
     void OnShootAction(InputAction.CallbackContext context)
     {
-        Arrow arrow = Instantiate(arrowTemplate);
-        arrow.transform.position = this.transform.position;
-        arrow.SetVelocity(this.direction.normalized * this.arrowSpeed);
+        if (this.shootEnabled) {
+            Arrow arrow = Instantiate(arrowTemplate);
+            arrow.transform.position = this.transform.position;
+            arrow.SetVelocity(this.direction.normalized * this.arrowSpeed);
+            shootSFX.PlayOneShot(this.shootSFX.clip, 1.0f);
+        }
     }
 }

@@ -4,24 +4,41 @@ using UnityEngine;
 
 public class DayNight : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public UnityEngine.Rendering.Universal.Light2D lightWorld;
+
+    private static DayNight instance = null;
+
+    public static DayNight GetInstance()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("No instance of DayNight");
+            instance = Instantiate(new GameObject("DayNight").AddComponent<DayNight>());
+        }
+        return instance;
+    }
+
     public AudioSource audioSource;
     public float bpm = 100; // Beats per minutes
-    public int sampleRate = 44100; 
+    public int sampleRate = 44100;
     private float bps; // Beats per seconds
     private float secondsPerBeat;
     public int beatsInDay = 1;
     private float samplesPerDay;
+
     private bool wasDay = true;
     private bool isDay = true;
-    private bool invert = false;
-    public Color nightColor = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-    public Color dayColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+    private bool transitionToDay = false;
+    private bool transitionToNight = false;
 
     void Start()
     {
-        audioSource.Play();
+        if (instance != null && instance != this) {
+            Debug.LogError("Two DayNight components");
+            Destroy(gameObject);
+        }
+        instance = this;
+
         Debug.Log(samplesPerDay);
         bps = bpm / 60.0f; // Beats per seconds
         secondsPerBeat = 1.0f / bps;
@@ -31,20 +48,21 @@ public class DayNight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isDay = (Mathf.Floor(audioSource.timeSamples/samplesPerDay))%2 == 1;
+        isDay = (Mathf.Floor(audioSource.timeSamples / samplesPerDay)) % 2 == 0;
+        transitionToDay = (isDay && !wasDay);
+        transitionToNight = (!isDay && wasDay);
         if (isDay != wasDay) {
-            invert = true;
             wasDay = isDay;
-        } else {
-            invert = false;
         }
+    }
 
-        if (invert) {
-            if (isDay) {
-                lightWorld.color = nightColor;
-            } else {
-                lightWorld.color = dayColor;
-            }
-        }
+    public bool GetTransitionToDay()
+    {
+        return transitionToDay;
+    }
+
+    public bool GetTransitionToNight()
+    {
+        return transitionToNight;
     }
 }
