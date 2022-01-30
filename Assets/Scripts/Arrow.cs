@@ -37,6 +37,7 @@ public class Arrow : MonoBehaviour
         this.rb.velocity = Vector2.zero;
         this.spriteRenderer.color = colorWhenStuck;
         collisionSFX.Play();
+        Destroy(gameObject, 5);
     }
 
     public void SetVelocity(Vector3 velocity) {

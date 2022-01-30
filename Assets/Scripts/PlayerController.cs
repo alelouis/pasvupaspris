@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -48,9 +49,7 @@ public class PlayerController : MonoBehaviour
         this.rb = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         walkAudioSource.loop = true;
-        heartList = GameObject.FindGameObjectsWithTag("Heart");
-    }
-
+        heartList = GameObject.FindGameObjectsWithTag("Heart"); }
     // Update is called once per frame
     void Update()
     {
@@ -95,9 +94,13 @@ public class PlayerController : MonoBehaviour
     
     public void TakeHit() {
         life--;
-        Debug.Log("Life : " + life);
-        this.hitAudioSource.PlayOneShot(hitAudioSource.clip, 1f);
-        Debug.Log(heartList);
-        heartList[life].GetComponent<HeartController>().SetEmpty();
+        Debug.Log("Life:"+life);
+        if (life <= 0) {
+            SceneManager.LoadScene("GameOverScene");
+        } 
+        else {
+            this.hitAudioSource.PlayOneShot(hitAudioSource.clip, 1f);
+            heartList[life].GetComponent<HeartController>().SetEmpty();
+        }
     }
 }
