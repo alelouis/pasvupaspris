@@ -7,6 +7,7 @@ public class DropObject : MonoBehaviour
     public GameObject objectPrefab;
 
     public void TriggerDrop() {
-        Instantiate(objectPrefab);
+        GameObject instance = Instantiate(objectPrefab);
+        instance.transform.position = transform.position;
     }
 }

@@ -20,7 +20,12 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    public AudioSource walkSFX;
+    public AudioSource walkAudioSource;
+    public AudioSource hitAudioSource;
+
+    public AudioClip hitSound;
+
+    public int life = 20;
 
     void OnEnable()
     {
@@ -41,18 +46,18 @@ public class PlayerController : MonoBehaviour
         this.jumpInput.performed += this.OnJumpInput;
         this.rb = GetComponent<Rigidbody2D>();
         this.spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        walkSFX.loop = true;
+        walkAudioSource.loop = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (this.horizontalCommand != 0) {
-            if (!this.walkSFX.isPlaying) {
-                this.walkSFX.Play();
+            if (!this.walkAudioSource.isPlaying) {
+                this.walkAudioSource.Play();
             }
         } else {
-            this.walkSFX.Stop();
+            this.walkAudioSource.Stop();
         }
     }
 
@@ -83,5 +88,12 @@ public class PlayerController : MonoBehaviour
     void OnJumpInput(InputAction.CallbackContext context)
     {
         this.jumpWanted = true;
+    }
+
+    
+    public void TakeHit() {
+        life--;
+        Debug.Log("Life : " + life);
+        this.hitAudioSource.PlayOneShot(hitAudioSource.clip, 1f);
     }
 }
